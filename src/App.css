@@ -42,7 +42,7 @@
   text-decoration: none;
 }
 
-.nav-links a:hover{
+.nav-links a:hover {
   color: black;
   text-decoration: underline;
 }
@@ -106,9 +106,12 @@
 }
 
 .about-hero {
-  width: 100%;
+  width: 80%;
   height: 100vh;
   flex-shrink: 0;
+  margin: 0 auto;
+  border-radius: 5px;
+  margin-top: 5px;
 }
 
 .about-heading {
@@ -118,7 +121,6 @@
   font-style: normal;
   font-weight: 700;
   line-height: 38px;
-  /* 118.75% */
 }
 
 .about-text {
@@ -171,6 +173,148 @@
   line-height: 23.919px;
   border: none;
 }
+
+/* Vans */
+.vans {
+  height: 70vh;
+}
+.vans a{
+  text-decoration: none;
+  color: black;
+}
+.vans h1 {
+  margin: 1em 2em;
+}
+
+.vans-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.van img {
+  width: 230px;
+  height: 230px;
+  border-radius: 5px;
+}
+
+.van-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.van-info h2 {
+  color: #161616;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 31.662px;
+  margin: 10px 0;
+}
+
+.van-type {
+  width: 85.711px;
+  height: 33.886px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  color: #FFEAD0;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 31.662px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.simple {
+  background-color: #E17654;
+}
+
+.luxury {
+  background-color: #161616;
+}
+
+.rugged {
+  background-color: #115E59;
+}
+
+/* Van Details */
+.van-detail-container {
+  height: 75vh;
+}
+
+.van-detail-container .back-button {
+    color: black;
+    text-decoration: none;
+}
+
+.van-detail-container .back-button span {
+    text-decoration: underline;
+}
+
+.van-detail {
+    display: flex;
+    color: #161616;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 80%;
+    margin-left: auto;
+}
+
+.van-detail img {
+    border-radius: 5px;
+    margin-block: 47px;
+    width: 30%;
+}
+
+.van-detail h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.van-detail > i {
+    align-self: flex-start;
+}
+
+.van-detail .van-price {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.van-description{
+  width: 60%;
+}
+
+.van-detail .van-price span {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.van-detail-info{
+ display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.van-detail .link-button {
+    background-color: #FF8C38;
+    color: white;
+    font-size: 1.125rem;
+    border: none;
+    width: 20%;
+    padding: 4px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 
 /* Footer */
 .footer {
