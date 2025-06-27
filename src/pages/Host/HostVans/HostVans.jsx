@@ -6,7 +6,7 @@ export default function HostVans() {
 
     const navigate = useNavigate()
     function handleClick(vanId) {
-        navigate(`/host/vans/${vanId}`)
+        navigate(vanId)
     }
     useEffect(()=>{
         fetch("/api/host/vans")

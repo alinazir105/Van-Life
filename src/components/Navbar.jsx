@@ -4,26 +4,26 @@ export default function Navbar() {
         <header className="navbar">
             <NavLink
                 className="logo"
-                to="/">
+                to=".">
                 #VANLIFE
             </NavLink>
 
             <nav className="nav-links">
                 <NavLink
                     className={({ isActive }) => isActive ? "active-link" : ""}
-                    to="/about">
+                    to="about">
                     About
                 </NavLink>
 
                 <NavLink
                     className={({ isActive }) => isActive ? "active-link" : ""}
-                    to="/vans">
+                    to="vans">
                     Vans
                 </NavLink>
 
                 <NavLink
                     className={({ isActive }) => isActive ? "active-link" : ""}
-                    to="/host">
+                    to="host">
                     Host
                 </NavLink>
             </nav>
