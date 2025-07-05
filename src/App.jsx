@@ -1,56 +1,64 @@
 import './App.css'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import Home from './pages/Home'
-import About from './pages/About'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Vans from './pages/Vans/Vans'
-import "./server"
-import VanDetails from './pages/Vans/VanDetails'
-import Dashboard from './pages/Host/Dashboard'
-import Income from './pages/Host/Income'
-import Reviews from './pages/Host/Reviews'
 import Layout from './components/Layout'
 import HostLayout from './components/HostLayout'
-import HostVans from "./pages/Host/HostVans/HostVans"
-import HostVanDetail from './pages/Host/HostVans/HostVanDetail'
-import HostVanInfo from './pages/Host/HostVans/HostVanInfo'
-import HostVanPricing from './pages/Host/HostVans/HostVanPricing'
-import HostVanPhotos from './pages/Host/HostVans/HostVanPhotos'
-import NotFound from './pages/NotFound'
-import Login from './Login'
 import AuthRequired from './components/AuthRequired'
-function App() {
+import Home from "./pages/Home"
+import "./server"
 
+// Lazy-loaded pages
+const About = lazy(() => import('./pages/About'))
+const Vans = lazy(() => import('./pages/Vans/Vans'))
+const VanDetails = lazy(() => import('./pages/Vans/VanDetails'))
+
+const Dashboard = lazy(() => import('./pages/Host/Dashboard'))
+const Income = lazy(() => import('./pages/Host/Income'))
+const Reviews = lazy(() => import('./pages/Host/Reviews'))
+
+const HostVans = lazy(() => import('./pages/Host/HostVans/HostVans'))
+const HostVanDetail = lazy(() => import('./pages/Host/HostVans/HostVanDetail'))
+const HostVanInfo = lazy(() => import('./pages/Host/HostVans/HostVanInfo'))
+const HostVanPricing = lazy(() => import('./pages/Host/HostVans/HostVanPricing'))
+const HostVanPhotos = lazy(() => import('./pages/Host/HostVans/HostVanPhotos'))
+
+const NotFound = lazy(() => import('./pages/NotFound'))
+const Login = lazy(() => import('./Login'))
+
+function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path='about' element={<About />} />
-          <Route path='vans' element={<Vans />} />
-          <Route path='vans/:id' element={<VanDetails />} />
+      <Suspense fallback={<div className="text-center mt-10 text-lg font-medium">Loading...</div>}>
+        <Routes>
+          <Route path='/' element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path='about' element={<About />} />
+            <Route path='vans' element={<Vans />} />
+            <Route path='vans/:id' element={<VanDetails />} />
 
-          <Route element={<AuthRequired />}>
-            <Route path="host" element={<HostLayout/>}>
-              <Route index element={<Dashboard />} />
-              <Route path="income" element={<Income />} />
-              <Route path="reviews" element={<Reviews />} />
-              <Route path='vans' element={<HostVans />} />
-              <Route path='vans/:id' element={<HostVanDetail />} >
-                <Route index element={<HostVanInfo />} />
-                <Route path='pricing' element={<HostVanPricing />} />
-                <Route path='photos' element={<HostVanPhotos />} />
+            <Route element={<AuthRequired />}>
+              <Route path="host" element={<HostLayout />}>
+                <Route index element={<Dashboard />} />
+                <Route path="income" element={<Income />} />
+                <Route path="reviews" element={<Reviews />} />
+                <Route path='vans' element={<HostVans />} />
+                <Route path='vans/:id' element={<HostVanDetail />} >
+                  <Route index element={<HostVanInfo />} />
+                  <Route path='pricing' element={<HostVanPricing />} />
+                  <Route path='photos' element={<HostVanPhotos />} />
+                </Route>
               </Route>
             </Route>
+
+            <Route path='login' element={<Login />} />
+            <Route path='*' element={<NotFound />} />
           </Route>
-          
-          <Route path='login' element={<Login />} />
-          <Route path='*' element={<NotFound />} />
-        </Route>
-      </Routes>
+        </Routes>
+      </Suspense>
     </BrowserRouter>
-    
   )
 }
 
