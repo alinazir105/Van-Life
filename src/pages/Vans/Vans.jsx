@@ -44,7 +44,7 @@ export default function Vans() {
                     aria-label={`View details for ${van.name}, 
                              priced at $${van.price} per day`}
                 >
-                    <img src={van.imageUrl} alt={`Image of ${van.name}`} />
+                    <img src={van.imageUrl} alt={`Image of ${van.name}`} loading="lazy" />
                     <div className="van-info">
                         <h2>{van.name}</h2>
                         <p>${van.price}/day</p>

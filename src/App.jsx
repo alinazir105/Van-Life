@@ -31,7 +31,7 @@ const Login = lazy(() => import('./Login'))
 function App() {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div className="text-center mt-10 text-lg font-medium">Loading...</div>}>
+      <Suspense fallback={<div style={{textAlign: "center", marginTop : "2em", fontSize : "2rem", fontWeight : "bold"}}/*"text-center mt-10 text-lg font-medium"*/>Loading...</div>}>
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
