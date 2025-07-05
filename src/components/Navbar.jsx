@@ -1,5 +1,15 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, Link } from "react-router-dom"
+import avatarIcon from "../assets/avatar-icon.png"
+import { useContext, useState } from "react"
+import { IsLoggedInContext } from "./Layout"
 export default function Navbar() {
+    // localStorage.getItem("loggedin")
+    const {isLoggedIn, setIsLoggedIn} = useContext(IsLoggedInContext)
+
+    function handleClick (){
+        localStorage.removeItem("loggedin")
+        setIsLoggedIn(null)
+    }
     return (
         <header className="navbar">
             <NavLink
@@ -26,6 +36,22 @@ export default function Navbar() {
                     to="host">
                     Host
                 </NavLink>
+
+                {
+                    !isLoggedIn && 
+                    <Link to="login" className="login-link">
+                        <img 
+                            src={avatarIcon} 
+                            className="login-icon"
+                        />
+                    </Link>
+                    }
+                {
+                    isLoggedIn &&    
+                    <button onClick={handleClick}>
+                        Logout
+                    </button>
+                }
             </nav>
         </header>
     )
